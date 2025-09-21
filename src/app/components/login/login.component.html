@@ -1,0 +1,43 @@
+<div class="login-container">
+  <h2>Welcome Back</h2>
+  <p class="sub-title">Please login to your account</p>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" formControlName="email" type="email" placeholder="Enter your email" />
+      <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error">
+        <span *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</span>
+        <span *ngIf="loginForm.get('email')?.errors?.['email']">Enter a valid email.</span>
+      </div>
+    </div>
+
+    <!-- Password -->
+    <div class="form-group">
+      <label for="password">Password</label>
+      <div class="password-wrapper">
+        <input id="password" [type]="showPassword ? 'text' : 'password'" formControlName="password"
+          placeholder="Enter your password" />
+        <button type="button" class="toggle-password" (click)="showPassword = !showPassword">
+          {{ showPassword ? 'Hide' : 'Show' }}
+        </button>
+      </div>
+      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error">
+        Password is required.
+      </div>
+    </div>
+
+    <!-- Server Error -->
+    <div *ngIf="errorMessage" class="error server-error">{{ errorMessage }}</div>
+
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="loginForm.invalid" class="btn-login">Login</button>
+  </form>
+
+  <div class="register-link">
+    <span>Don't have an account?</span>
+    <button style="margin-left: 10px; padding: 5px; background-color: chartreuse; border: 0 ; border-radius: 6px;"  routerLink="/register">Register Here</button>
+  </div>
+</div>

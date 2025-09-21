@@ -1,0 +1,51 @@
+<nav class="bg-white shadow sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16 items-center">
+
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <h1 class="text-3xl font-bold text-blue-600">MyWebsite</h1>
+      </div>
+
+      <!-- Desktop Menu -->
+      <ul class="hidden md:flex space-x-8 font-semibold text-gray-700">
+        <li><a routerLink="/home" class="hover:text-blue-600 transition">Home</a></li>
+        <li><a routerLink="/products" class="hover:text-blue-600 transition">Products</a></li>
+        <li><a routerLink="/services" class="hover:text-blue-600 transition">Services</a></li>
+        <li><a routerLink="/contact" class="hover:text-blue-600 transition">Contact</a></li>
+      </ul>
+
+      <!-- Buttons -->
+      <div class="hidden md:flex items-center space-x-4">
+        <button (click)="logout()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500 transition">Logout</button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button (click)="toggleMenu()" class="text-gray-700 focus:outline-none">
+          <svg *ngIf="!menuOpen" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg *ngIf="menuOpen" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Menu -->
+    <div *ngIf="menuOpen" class="md:hidden mt-2 space-y-2 px-2 pb-3">
+      <a routerLink="/home" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition">Home</a>
+      <a routerLink="/products" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition">Products</a>
+      <a routerLink="/services" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition">Services</a>
+      <a routerLink="/contact" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition">Contact</a>
+      <button (click)="logout()" class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500 transition mt-2">Logout</button>
+    </div>
+  </div>
+</nav>
+
+  <!-- Child pages render here -->
+  <router-outlet></router-outlet>

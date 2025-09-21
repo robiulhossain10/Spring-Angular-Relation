@@ -1,0 +1,18 @@
+.pipe{
+  animation-name: myAnimation;
+  animation-duration: 2s;
+
+
+}
+
+@keyframes myAnimation {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(100px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
